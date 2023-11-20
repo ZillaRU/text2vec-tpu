@@ -18,7 +18,7 @@ from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 from tqdm import tqdm
 from tqdm.autonotebook import trange
-from transformers import AutoTokenizer, AutoModel
+from transformers import BertTokenizer, AutoModel
 
 from text2vec.utils.stats_util import compute_spearmanr, compute_pearsonr
 
@@ -32,7 +32,7 @@ class EncoderType(Enum):
     CLS = 2
     POOLER = 3
     MEAN = 4
-
+    
     def __str__(self):
         return self.name
 
@@ -72,7 +72,7 @@ class SentenceModel:
             raise ValueError(f"encoder_type must be in {list(EncoderType)}")
         self.encoder_type = encoder_type
         self.max_seq_length = max_seq_length
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
+        self.tokenizer = BertTokenizer.from_pretrained('/data/aigc/rzy_dev/airbox_other/text2vec/tokenizer_cache/')
         if device == 'tpu':
             self.device = 'tpu'
             self.bert = EngineOV(model_path='/data/aigc/rzy_dev/airbox_other/text2vec/model_file/bert_bge-4_512.bmodel',
@@ -130,7 +130,8 @@ class SentenceModel:
 
         if self.encoder_type == EncoderType.MEAN:
             """
-            Mean Pooling - Take attention mask into account for correct averaging
+            Mean PoolinAIgc@123
+            g - Take attention mask into account for correct averaging
             """
             token_embeddings = torch.from_numpy(model_output[0])  # Contains all token embeddings
             input_mask_expanded = torch.from_numpy(attention_mask).unsqueeze(-1).expand(token_embeddings.size()).float()
