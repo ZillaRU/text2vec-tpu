@@ -1,3 +1,10 @@
+# This repo is an optional part of [chatdoc-TPU](https://github.com/zhengorange/chatdoc). 
+
+# Download bmodels
+```
+python -m pip install dfn
+python -m dfn --url https://disk.sophgo.vip/sharing/j2wEOw00l
+```
 [**🇨🇳中文**](https://github.com/shibing624/text2vec/blob/master/README.md) | [**🌐English**](https://github.com/shibing624/text2vec/blob/master/README_EN.md) | [**📖文档/Docs**](https://github.com/shibing624/text2vec/wiki) | [**🤖模型/Models**](https://huggingface.co/shibing624) 
 
 <div align="center">
